@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello, Dribbble</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+</body>
+<script>
+	var svg = d3.select("body")
+	.append("svg")
+	.attr("width",768)
+	.attr("height",500);
+
+	var text = svg.append("text")
+	.attr("x",100)
+	.attr("y",100)
+	.attr("fill","red")
+	.attr("text-anchor","right")
+	.attr("alignment-baseline","central")
+	.text(function() {
+		return "Dribbble";
+	});
+
+	var defs = svg.append("defs");
+
+	var filter = defs.append("filter")
+	.attr("id","glow");
+
+	filter.append("feGaussianBlur")
+	.attr("stdDeviation","0")
+	.attr("result","coloredBlur");
+
+	var feMerge = filter.append("feMerge");
+
+	feMerge.append("feMergeNode")
+	.attr("in","coloredBlur");
+
+	feMerge.append("feMergeNode")
+	.attr("in","SourceGraphic");
+
+	d3.select("text").style("filter","url(#glow)");
+
+	var glowAnim = d3.select("feGaussianBlur").append("animate");
+
+	glowAnim.attr("attributeType","XML")
+	.attr("attributeName","stdDeviation")
+	.attr("values","0;9;0")
+	.attr("dur","3s")
+	.attr("calcMode","linear")
+	.attr("repeatCount","indefinite");
+</script>
+</html>

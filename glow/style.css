@@ -1,0 +1,21 @@
+@font-face {
+	src:url("./BauhausBoldC.otf");
+	font-family:"Bauhaus Bold";
+}
+body, svg {
+	background-color: #333333;
+}
+svg {
+	border: 1px solid black;
+	display: block;
+	margin: auto;
+}
+rect {
+	width:100%;
+	height:100%;
+}
+text {
+	fill:#ea4c89;
+	font-family: "Bauhaus Bold";
+	font-size: 120pt;
+}
