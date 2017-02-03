@@ -6,45 +6,76 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
+<section id="container">
+</section>
 </body>
 <script>
-	var svg = d3.select("body")
+//Initialize the container
+var svg = d3.select("#container")
 	.append("svg")
-	.attr("width",768)
-	.attr("height",500);
+	.attr("width",800)
+	.attr("height",600);
 
-	var text = svg.append("text")
-	.attr("x",100)
-	.attr("y",100)
+//Add the text
+var text = svg.append("text")
+	.attr("x",410)
+	.attr("y",300)
 	.attr("fill","red")
-	.attr("text-anchor","right")
+	.attr("text-anchor","middle")
 	.attr("alignment-baseline","central")
 	.text(function() {
 		return "Dribbble";
 	});
 
-	var defs = svg.append("defs");
+//Add the thank you text
+var thanks = svg.append("text")
+	.attr("x",400)
+	.attr("y",550)
+	.attr("id","thanks")
+	.attr("fill","red")
+	.attr("text-anchor","middle")
+	.text(function() {
+		return "Thanks, @mikeroche!";
+	})
 
-	var filter = defs.append("filter")
+//Add the <defs> region for the filters
+var defs = svg.append("defs");
+
+//Create a new filter with a specific ID
+var filter = defs.append("filter")
 	.attr("id","glow");
 
-	filter.append("feGaussianBlur")
+//Properties of the Gaussian blur filter
+//stdDeviation is the amount
+filter.append("feGaussianBlur")
 	.attr("stdDeviation","0")
 	.attr("result","coloredBlur");
 
-	var feMerge = filter.append("feMerge");
-
-	feMerge.append("feMergeNode")
+//Add the merge property, all sequentially
+var feMerge = filter.append("feMerge");
+feMerge.append("feMergeNode")
 	.attr("in","coloredBlur");
 
-	feMerge.append("feMergeNode")
+//Take source graphic and process its
+//filter's results
+feMerge.append("feMergeNode")
 	.attr("in","SourceGraphic");
 
-	d3.select("text").style("filter","url(#glow)");
+//Add the glow effect to the text
+//This is done by an ID-URL set
+d3.select("text").style("filter","url(#glow)");
 
-	var glowAnim = d3.select("feGaussianBlur").append("animate");
+//Animate the Gaussian blur
+//Kind of an outdated method because
+//it uses XML but it's fairly commonly
+//used with D3 for chart animations
+var glowAnim = d3.select("feGaussianBlur").append("animate");
 
-	glowAnim.attr("attributeType","XML")
+//Set the target to animate
+//Range of values and the transition time
+//Linear interpolation between points
+//Loop forever
+glowAnim.attr("attributeType","XML")
 	.attr("attributeName","stdDeviation")
 	.attr("values","0;9;0")
 	.attr("dur","3s")

@@ -2,13 +2,23 @@
 	src:url("./BauhausBoldC.otf");
 	font-family:"Bauhaus Bold";
 }
-body, svg {
-	background-color: #333333;
+html,body,section {
+	height: 100%;
+}
+#container {
+	display: -webkit-flex;
+   	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
 }
 svg {
-	border: 1px solid black;
 	display: block;
 	margin: auto;
+	background-color: #333333;
 }
 rect {
 	width:100%;
@@ -18,4 +28,8 @@ text {
 	fill:#ea4c89;
 	font-family: "Bauhaus Bold";
 	font-size: 120pt;
+}
+#thanks {
+	fill:white;
+	font-size: 12pt;
 }
