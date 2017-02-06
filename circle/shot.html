@@ -18,7 +18,12 @@ var svg = d3.select("#container")
 	.attr("height",600);
 
 //Add group that contains the circle
-var group = svg.append("g");
+var group = svg.append("g")
+			.transition()
+			.duration(100)
+			.attrTween("transform",function(d,i,a) {
+				return d3.interpolateString("rotate(0)","rotate(360)");
+			});
 
 //Change opacity transition to fill later - browser support
 var circle = group.append("circle")
@@ -31,16 +36,21 @@ var circle = group.append("circle")
 				//.duration(1000)
 				.attr("opacity","1");
 
+//Add the definitions for the mask
 var defs = group.append("defs");
 
+//Add the mask tag to the definitions, give it an ID
 var mask = defs.append("mask")
 			.attr("id","pathway")
 
+//Initially, mask layer is all white - basically the same way
+//Photoshop does masks
 var keepMask = mask.append("rect")
 				.attr("width","100%")
 				.attr("height","100%")
 				.attr("fill","white");
 
+//Add the mask to cut out the pathway
 var cutPath = mask.append("rect")
 				.attr("x",400)
 				.attr("y",267)
@@ -48,12 +58,14 @@ var cutPath = mask.append("rect")
 				.attr("height",66)
 				.attr("fill","black");
 
+//Add mask to cut out the center of the circle
 var cutCenter = mask.append("circle")
 				.attr("cx",400)
 				.attr("cy",300)
 				.attr("r",66)
 				.attr("fill","black");						
 
+//Add the movie title
 var title = group.append("text")
 				.attr("class","colored")
 				.attr("x",455)
