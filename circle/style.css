@@ -1,0 +1,21 @@
+@font-face {
+	src:url("./BauhausBoldC.otf");
+	font-family:"Bauhaus Bold";
+}
+html,body,section {
+	height: 100%;
+}
+#container {
+	display: -webkit-flex;
+   	display: flex;
+	-webkit-flex-direction: row;
+	flex-direction: row;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+svg {
+	display: block;
+	margin: auto;
+}
