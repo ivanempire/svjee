@@ -1,0 +1,22 @@
+@font-face {
+	font-family: "Monark Bold";
+	src:url("./MonarkBold.ttf");
+}
+
+body,svg {
+	background-color:#f5ffef;
+}
+
+/*
+Actual color is:#d73936;;
+*/
+circle {
+	fill:black;
+}
+text {
+	font-family:"Monark Bold";
+	font-size:30pt;
+}
+.colored {
+	fill:#d73936;
+}

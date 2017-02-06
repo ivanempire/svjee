@@ -16,5 +16,55 @@ var svg = d3.select("#container")
 	.append("svg")
 	.attr("width",800)
 	.attr("height",600);
+
+//Add group that contains the circle
+var group = svg.append("g");
+
+//Change opacity transition to fill later - browser support
+var circle = group.append("circle")
+				.attr("class","colored")
+				.attr("opacity","0")
+				.attr("cx",400)
+				.attr("cy",300)
+				.attr("r",265)
+				//.transition()
+				//.duration(1000)
+				.attr("opacity","1");
+
+var defs = group.append("defs");
+
+var mask = defs.append("mask")
+			.attr("id","pathway")
+
+var keepMask = mask.append("rect")
+				.attr("width","100%")
+				.attr("height","100%")
+				.attr("fill","white");
+
+var cutPath = mask.append("rect")
+				.attr("x",400)
+				.attr("y",267)
+				.attr("width",280)
+				.attr("height",66)
+				.attr("fill","black");
+
+var cutCenter = mask.append("circle")
+				.attr("cx",400)
+				.attr("cy",300)
+				.attr("r",66)
+				.attr("fill","black");						
+
+var title = group.append("text")
+				.attr("class","colored")
+				.attr("x",455)
+				.attr("y",300)
+				.attr("fill","black")
+				//.attr("text-anchor","middle")
+				.attr("alignment-baseline","middle")
+				.text(function() {
+					return "THE CIRCLE";
+				});
+
+circle.attr("mask","url(#pathway)");
 </script>
 </html>
