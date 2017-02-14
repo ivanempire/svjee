@@ -1,0 +1,11 @@
+#planet {
+	fill:#4CC2C4;
+}
+
+.pebble {
+	fill:white;
+}
+
+svg {
+	border:1px solid black;
+}
