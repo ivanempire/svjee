@@ -11,36 +11,60 @@
 </section>
 </body>
 <script>
-//Initialize the container
 
+//Viewport dimensions
+var viewportWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+//SVG dimensions with some leeway room
+var svgWidth = viewportWidth;
+var svgHeight = viewportHeight;
+
+//Initialize the container
 var svg = d3.select("#container")
 	.append("svg")
-	.attr("width",800)
-	.attr("height",600);
+	.attr("width",svgWidth)
+	.attr("height",svgHeight);
 
-var startFlow = function() {
-	var circleRadius = 40;
+//Blur filter for bubbles
+var filter = svg.append("defs")
+	.append("filter")
+	.attr("id", "bubbleBlur")
+	.append("feGaussianBlur")
+	.attr("stdDeviation", 3);
 
-	var circle = svg.append("circle")
-		.attr("r",circleRadius)
+var circleRadius = 40;
+var circleNumber = Math.ceil(Math.random() * 20) + 2;
+
+var addCirlce = function(circleNumber) {
+	for(var i=0;i<circleNumber;i++) {
+		svg.append("circle")
+		.attr("r",function(d,i) {
+			return Math.random() * circleRadius + i;
+		})
 		.attr("cx",function() {
-			return Math.random() * 600;
+			return Math.random() * svgWidth;
 		})
 		.attr("cy",function() {
-			return 800 + circleRadius;
+			return svgHeight + parseFloat(d3.select(this).attr("r"));
 		})
+		.attr("filter","url(#bubbleBlur)")
 		.transition()
-		.duration(1500)
+		.ease(d3.easeSinOut)
+		.duration(function() {
+			return Math.random()*10000 + 5000;
+		})
 		.attr("cy",function() {
-			return 0 - circleRadius;
+			return 0 - parseFloat(d3.select(this).attr("r"))*1.5;
 		})
 		.on("end",function() {
 			d3.select(this).remove();
-			startFlow();
+			addCirlce(1);
 		})
+	}
 };
 
 
-startFlow();
+addCirlce(circleNumber);
 </script>
 </html>

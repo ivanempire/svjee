@@ -1,7 +1,31 @@
+* {
+	margin:0px;
+	padding: 0px;
+}
+body {
+	/*background: linear-gradient(140deg, rgb(0,160,151), rgb(0,23,60));*/
+	/*background:linear-gradient(180deg,rgba(255,255,255,0.25) 1%,rgba(255,255,255,0)), rgb(13,13,62);*/
+	/*  radial-gradient(circle,rgba(237,232,203,1),rgba(237,232,203,0))
+	    */
+	/*background:linear-gradient(180deg,rgba(0,160,151,0.4) 1%,rgba(0,23,60,0.2)), rgb(13,13,62);*/
+	/*background:radial-gradient(circle farthest-corner at 50vw -100vw,rgba(237,232,203,1),rgba(237,232,203,0)), linear-gradient(180deg,rgba(0,160,151,0.4) 1%,rgba(0,23,60,0.2)), rgb(13,13,62);*/
+	background:radial-gradient(circle 75vw at 50vw -60vw,rgba(237,232,203,1) 1%,rgba(237,232,203,0)100%), linear-gradient(180deg,rgba(0,160,151,0.4) 1%,rgba(0,23,60,0.2)), rgb(13,13,62);
+	
+	overflow: hidden;
+}
 svg {
-	border:1px solid black;
+	background:transparent;
 }
 circle {
 	fill:#69D2E7;
-	opacity:0.5;
+	opacity:0.25;
 }
+/*
+1st layer - sun light type deal
+2nd layer - general lighting layer
+lowest layer - solid dark blue color
+*/
+/*
+article {
+	background:linear-gradient(0deg,rgba(255,255,255,1),rgba(255,255,255,0)), rgb(13,13,62);
+}*/
