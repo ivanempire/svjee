@@ -11,3 +11,9 @@ The glow is applied to the text through the use of a GaussianBlur filter in SVG.
 
  - [D3JS glow](http://www.visualcinnamon.com/2016/06/glow-filter-d3-visualization.html)
  - [SVG filters](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter)
+
+## Bubbles
+This is my second shot for Dribbble. There have been several in the works for a while now, but I had a very clear picture of what I wanted this one to look like. The resources used for this shot:
+
+ - [linear gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
+ - [radial gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient)
