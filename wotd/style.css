@@ -1,0 +1,9 @@
+html {
+	background:linear-gradient(180deg,#40c2e6,#0f173d);
+}
+text {
+	font-family: "Libre Baskerville", serif;
+	font-weight: bold;
+	font-size: 5.5em;
+	fill:rgba(255,255,255,0.2);
+}
